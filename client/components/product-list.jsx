@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductListItem from './product-list-item';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -6,25 +7,35 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
-    this.getProducts = this.getProducts.bind(this);
-  }
-
-  getProducts() {
-    fetch('/api/products/')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ products: data });
-      });
   }
 
   componentDidMount() {
     this.getProducts();
   }
 
+  getProducts() {
+    fetch('/api/products/')
+      .then(response => response.json())
+      .then(data => {
+        return this.setState({ products: data });
+      });
+  }
+
   render() {
-    const products = this.state.products;
     return (
-      <ProductList products={products}/>
+      <div className="container">
+        { this.state.products.map(product => {
+          return (
+            <ProductListItem
+              key={product.productId}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+              shortDescription={product.shortDescription}
+            />);
+        })
+        }
+      </div>
     );
   }
 }
