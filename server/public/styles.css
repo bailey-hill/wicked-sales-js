@@ -1,28 +1,5 @@
-.myContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.myNavbar {
-  margin-left: 165px;
-}
-
-.myCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .img-container {
   text-align: center;
-}
-
-.card-body-text-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
 }
 
 h5, h6, p {
@@ -32,11 +9,4 @@ h5, h6, p {
 p {
   font-size: 10pt;
     line-height: 16px;
-}
-
-.myCardBody {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
