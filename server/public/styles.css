@@ -1,14 +1,14 @@
-.container {
+.myContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.navbar-brand {
+.myNavbar {
   margin-left: 165px;
 }
 
-.card {
+.myCard {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +34,7 @@ p {
     line-height: 16px;
 }
 
-.card-body {
+.myCardBody {
   padding: 0;
   display: flex;
   flex-direction: column;

@@ -3,8 +3,8 @@ import React from 'react';
 class ProductListItem extends React.Component {
   render() {
     return (
-      <div className="w-25 m-3 card">
-        <div className="card-body">
+      <div className="w-25 m-3 card myCard">
+        <div className="card-body myCardBody">
           <div className="img-container">
             <img className="images card-img-top" src={this.props.image} />
           </div>
