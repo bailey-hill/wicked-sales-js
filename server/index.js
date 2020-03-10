@@ -34,6 +34,39 @@ app.get('/api/products/', (req, res, next) => {
     }).catch(err => next(err));
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const productId = req.params.productId;
+  const text = `
+    select *
+      from "products"
+      where "productId" = $1
+  `;
+  const values = [productId];
+  if (productId < 0) {
+    res.status(400).json({
+      error: 'Invalid productId'
+    });
+    return;
+  }
+  db.query(text, values)
+    .then(result => {
+      const product1 = result.rows[0];
+      if (!product1) {
+        res.status(404).json({
+          error: `Product ID ${productId} not found`
+        });
+      } else {
+        return res.json(product1);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
