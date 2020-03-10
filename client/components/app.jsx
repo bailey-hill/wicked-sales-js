@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
+import ProductDetails from './product-details';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,20 +19,31 @@ class App extends React.Component {
   setView(name, params) {
     this.setState({
       view: {
-        name: 'details'
-        // params: { productId: product.productId }
+        name: 'details',
+        params
       }
     });
   }
 
   render() {
-    const setView = this.state.setView;
-    return (
-      <div>
-        <Header />
-        <ProductList setView={setView}/>
-      </div>
-    );
+    const setView = this.setView;
+    const viewName = this.state.view.name;
+    const viewParams = this.state.view.params;
+    if (viewName === 'catalog') {
+      return (
+        <div>
+          <Header />
+          <ProductList setView={setView}/>
+        </div>
+      );
+    } if (viewName === 'details') {
+      return (
+        <div>
+          <Header />
+          <ProductDetails setView={setView} viewParams={viewParams} />
+        </div>
+      );
+    }
   }
 }
 

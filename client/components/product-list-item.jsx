@@ -3,7 +3,7 @@ import React from 'react';
 class ProductListItem extends React.Component {
   render() {
     return (
-      <div className="w-25 m-3 card d-flex align-items-center justify-content-center">
+      <div id={this.props.productId} onClick={this.props.setView} className="w-25 m-3 card d-flex align-items-center justify-content-center">
         <div className="card-body p-0 d-flex flex-column justify-content-around">
           <div className="img-container">
             <img className="images card-img-top" src={this.props.image} />

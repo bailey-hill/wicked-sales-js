@@ -9,16 +9,25 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    event.preventDefault();
-    fetch(`/api/products/${event.target.productId}`)
+    // const eventTarget = event.target.id;
+    const product = this.state.product;
+    fetch('/api/products/1')
       .then(response => response.json())
       .then(data => {
-        return this.setState({ product: data });
+        // console.log(this.props.product.productId);
+        // if (this.props.product.productId === Number(eventTarget)) {
+        return this.setState({ product });
+        // }
       });
+    // this.props.setView();
   }
 
   render() {
-    return null;
+    return (
+      <div onClick={this.props.setView}>
+        back to catalog
+      </div>
+    );
   }
 }
 
