@@ -7,6 +7,7 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
+    this.setView2 = this.setView2.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +22,13 @@ class ProductList extends React.Component {
       });
   }
 
+  setView2(event) {
+    // console.log(event.currentTarget.getAttribute('id'));
+    this.props.setView();
+  }
+
   render() {
+    // console.log(this.state.product);
     return (
       <div className="container d-flex flex-wrap justify-content-center">
         { this.state.products.map(product => {
@@ -32,7 +39,7 @@ class ProductList extends React.Component {
               image={product.image}
               price={product.price}
               shortDescription={product.shortDescription}
-              setView={this.props.setView}
+              setView2={this.setView2}
               productId={product.productId}
             />);
         })

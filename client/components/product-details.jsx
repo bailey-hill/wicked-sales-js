@@ -10,6 +10,7 @@ class ProductDetails extends React.Component {
 
   componentDidMount() {
     // const eventTarget = event.target.id;
+    // console.log('g');
     const product = this.state.product;
     fetch('/api/products/1')
       .then(response => response.json())
@@ -24,7 +25,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div onClick={this.props.setView}>
+      <div>
         back to catalog
       </div>
     );
