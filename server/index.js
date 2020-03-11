@@ -68,7 +68,27 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart/', (req, res, next) => {
-  res.json([]);
+  if (typeof req.session.cartId === 'undefined') {
+    res.json([]);
+  } else {
+    const sql = `select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartId" = $1`;
+    const values = [req.session.cartId];
+    return db.query(sql, values)
+      .then(result => {
+        const cartItem = result.rows[0];
+        const newArr = [];
+        newArr.push(cartItem);
+        return res.json(newArr);
+      });
+  }
 });
 
 app.post('/api/cart/', (req, res, next) => {
