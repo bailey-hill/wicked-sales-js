@@ -9,26 +9,28 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    // const eventTarget = event.target.id;
-    // console.log('g');
-    const product = this.state.product;
-    fetch('/api/products/1')
+    fetch(`/api/products/${this.props.viewParams.productId}`)
       .then(response => response.json())
       .then(data => {
-        // console.log(this.props.product.productId);
-        // if (this.props.product.productId === Number(eventTarget)) {
-        return this.setState({ product });
-        // }
+        return this.setState({ product: data });
       });
-    // this.props.setView();
   }
 
   render() {
-    return (
-      <div>
-        back to catalog
-      </div>
-    );
+    if (this.state.product === null) {
+      return null;
+    } else {
+      return (
+        <div id={this.props.productId}>
+          <div>back to catalog</div>
+          <img src={this.state.product.image} />
+          <div>{this.state.product.name}</div>
+          <div>{this.state.product.price}</div>
+          <div>{this.state.product.shortDescription}</div>
+          <div>{this.state.product.longDescription}</div>
+        </div>
+      );
+    }
   }
 }
 

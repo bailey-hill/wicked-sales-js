@@ -40,7 +40,7 @@ class App extends React.Component {
       return (
         <div>
           <Header />
-          <ProductDetails setView={setView} viewParams={viewParams} />
+          <ProductDetails product={this.props.product} setView={setView} viewParams={viewParams} />
         </div>
       );
     }
