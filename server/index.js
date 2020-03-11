@@ -68,10 +68,10 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart/', (req, res, next) => {
-  res.json();
+  res.json([]);
 });
 
-app.get('/api/cart/', (req, res, next) => {
+app.post('/api/cart/', (req, res, next) => {
   const productId = req.body.productId;
   if (productId < 0) {
     res.status(400).json({
@@ -88,26 +88,51 @@ app.get('/api/cart/', (req, res, next) => {
   db.query(text, values)
     .then(result => {
       const productRows = result.rows;
+      const price = result.rows[0].price;
       if (!productRows) {
         res.status(400).json({
           error: 'No data to return'
         });
       } else {
         const sql = `insert into "carts" ("cartId", "createdAt")
-      values (default, default)
-      returning "cartId"`;
+        values (default, default)
+        returning "cartId"`;
         return db.query(sql)
           .then(result => {
             const cartId = result.rows[0].cartId;
-            const price = result.rows[0].price;
-            return res.json(cartId, price);
+            return { cartId, price };
           });
       }
-
     })
-    // .then(res =>
-    //   console.log(res)
-    // )
+    .then(result => {
+      req.session.cartId = result.cartId;
+      const sql = `insert into "cartItems" ("cartId", "productId", "price")
+      values ($1, $2, $3)
+      returning "cartItemId"`;
+      const values = [result.cartId, productId, result.price];
+      return db.query(sql, values)
+        .then(result => {
+          const cartItemId = result.rows[0].cartItemId;
+          return cartItemId;
+        });
+    }
+    ).then(result => {
+      const sql = `select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1`;
+      const values = [result];
+      return db.query(sql, values)
+        .then(result => {
+          const cartItem = result.rows[0];
+          return res.status(201).json(cartItem);
+        });
+    })
     .catch(err => {
       console.error(err);
       res.status(500).json({
