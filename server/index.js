@@ -110,7 +110,9 @@ app.post('/api/cart/', (req, res, next) => {
       const productRows = result.rows;
       const price = result.rows[0].price;
       if (!productRows) {
-        throw new ClientError('No data to return');
+        res.status(404).json(
+          throw new ClientError('No data to return')
+        );
       }
       if (typeof req.session.cartId === 'undefined') {
         const sql = `insert into "carts" ("cartId", "createdAt")
@@ -122,8 +124,7 @@ app.post('/api/cart/', (req, res, next) => {
             return { cartId, price };
           });
       } else {
-        const values = [req.session.cartId];
-        return { values, price };
+        res.json(result.rows);
       }
     })
     .then(result => {
