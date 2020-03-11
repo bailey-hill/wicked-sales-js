@@ -67,6 +67,39 @@ app.get('/api/products/:productId', (req, res, next) => {
     });
 });
 
+app.get('/api/cart/', (req, res, next) => {
+  res.json();
+});
+
+app.get('/api/cart/', (req, res, next) => {
+  const productId = req.body.productId;
+  if (productId < 0) {
+    res.status(400).json({
+      error: 'Invalid productId'
+    });
+    return;
+  }
+  new Promise(function (resolve, reject) {
+
+  }).then(result => {
+    const productRows = result.rows;
+    if (!productRows) {
+      res.status(400).json({
+        error: 'No data to return'
+      });
+    } else {
+
+      return res.json(productRows);
+    }
+  })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
