@@ -10,7 +10,7 @@ class ProductListItem extends React.Component {
           </div>
           <div className="d-flex justify-content-space-between align-items-start flex-column">
             <h5 className="card-title">{this.props.name}</h5>
-            <h6 className="card-subtitle">{`$ ${(this.props.price / 100).toFixed(2)}`}</h6>
+            <h6 className="card-subtitle text-muted">{`$ ${(this.props.price / 100).toFixed(2)}`}</h6>
             <p className="card-text">{this.props.shortDescription}</p>
           </div>
         </div>
