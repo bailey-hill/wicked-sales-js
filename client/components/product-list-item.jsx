@@ -6,7 +6,7 @@ class ProductListItem extends React.Component {
       <div id={this.props.productId} onClick={this.props.setView2} className="w-25 m-3 card d-flex align-items-center justify-content-center">
         <div className="card-body p-0 d-flex flex-column justify-content-around">
           <div className="img-container">
-            <img className="images card-img-top" src={this.props.image} />
+            <img className="card-img-top" src={this.props.image} />
           </div>
           <div className="d-flex justify-content-space-between align-items-start flex-column">
             <h5 className="card-title">{this.props.name}</h5>

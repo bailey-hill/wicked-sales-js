@@ -6,6 +6,7 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.setView3 = this.setView3.bind(this);
   }
 
   componentDidMount() {
@@ -14,6 +15,10 @@ class ProductDetails extends React.Component {
       .then(data => {
         return this.setState({ product: data });
       });
+  }
+
+  setView3(event) {
+    this.props.setView('catalog', {});
   }
 
   render() {
@@ -26,8 +31,8 @@ class ProductDetails extends React.Component {
 
             <div className="d-flex justify-content-space-between align-items-start flex-row">
               <div>
-                <div className="mt-1 ml-2 text-muted" onClick={this.props.setView}> &lt; back to catalog</div>
-                <img className="mt-2 ml-2" src={this.state.product.image} />
+                <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
+                <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
               <div className="d-flex align-items-start flex-column">
                 <h3 className="mt-5 ml-2">{this.state.product.name}</h3>
