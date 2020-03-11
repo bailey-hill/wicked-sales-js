@@ -7,6 +7,7 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
+    this.setView2 = this.setView2.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +22,11 @@ class ProductList extends React.Component {
       });
   }
 
+  setView2(event) {
+    const productId = Number(event.currentTarget.getAttribute('id'));
+    this.props.setView('details', { productId });
+  }
+
   render() {
     return (
       <div className="container d-flex flex-wrap justify-content-center">
@@ -32,6 +38,8 @@ class ProductList extends React.Component {
               image={product.image}
               price={product.price}
               shortDescription={product.shortDescription}
+              setView2={this.setView2}
+              productId={product.productId}
             />);
         })
         }
