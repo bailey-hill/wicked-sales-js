@@ -79,19 +79,35 @@ app.get('/api/cart/', (req, res, next) => {
     });
     return;
   }
-  new Promise(function (resolve, reject) {
+  const text = `
+    select "price"
+    from "products"
+    where "productId" = $1
+    `;
+  const values = [productId];
+  db.query(text, values)
+    .then(result => {
+      const productRows = result.rows;
+      if (!productRows) {
+        res.status(400).json({
+          error: 'No data to return'
+        });
+      } else {
+        const sql = `insert into "carts" ("cartId", "createdAt")
+      values (default, default)
+      returning "cartId"`;
+        return db.query(sql)
+          .then(result => {
+            const cartId = result.rows[0].cartId;
+            const price = result.rows[0].price;
+            return res.json(cartId, price);
+          });
+      }
 
-  }).then(result => {
-    const productRows = result.rows;
-    if (!productRows) {
-      res.status(400).json({
-        error: 'No data to return'
-      });
-    } else {
-
-      return res.json(productRows);
-    }
-  })
+    })
+    // .then(res =>
+    //   console.log(res)
+    // )
     .catch(err => {
       console.error(err);
       res.status(500).json({
