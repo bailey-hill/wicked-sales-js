@@ -93,11 +93,21 @@ app.post('/api/cart/', (req, res, next) => {
         res.status(400).json({
           error: 'No data to return'
         });
-      } else {
+      } if (typeof req.session.cartId === 'undefined') {
         const sql = `insert into "carts" ("cartId", "createdAt")
         values (default, default)
         returning "cartId"`;
         return db.query(sql)
+          .then(result => {
+            const cartId = result.rows[0].cartId;
+            return { cartId, price };
+          });
+      } else {
+        const sql = `select "cartId"
+         from "carts"
+         where "cartId" = $1`;
+        const values = [req.session.cartId];
+        return db.query(sql, values)
           .then(result => {
             const cartId = result.rows[0].cartId;
             return { cartId, price };
