@@ -113,7 +113,8 @@ app.post('/api/cart/', (req, res, next) => {
         res.status(400).json({
           error: 'No data to return'
         });
-      } if (typeof req.session.cartId === 'undefined') {
+      }
+      if (typeof req.session.cartId === 'undefined') {
         const sql = `insert into "carts" ("cartId", "createdAt")
         values (default, default)
         returning "cartId"`;
