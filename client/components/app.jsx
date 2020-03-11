@@ -42,16 +42,13 @@ class App extends React.Component {
   }
 
   cartItemCount() {
-    const data = this.state.cart;
-    let total = 0;
-    for (let i = 0; i < data.length; i++) {
-      total += data[i];
-    }
-    Number(total);
-    return total;
+    const length = this.state.cart.length;
+    Number(length);
+    return length;
   }
 
   addToCart(product) {
+    // console.log(product);
     fetch('/api/cart/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -80,7 +77,8 @@ class App extends React.Component {
       return (
         <div>
           <Header />
-          <ProductDetails addToCart={this.addToCart} product={this.props.product} setView={setView} viewParams={viewParams} />
+          <ProductDetails addToCart={this.addToCart} product={this.props.product}
+            setView={setView} viewParams={viewParams} />
         </div>
       );
     }
