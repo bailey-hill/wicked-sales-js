@@ -83,7 +83,7 @@ app.get('/api/cart/', (req, res, next) => {
     const values = [req.session.cartId];
     return db.query(sql, values)
       .then(result => {
-        const cartItem = result.rows[0];
+        const cartItem = result.rows;
         const newArr = [];
         newArr.push(cartItem);
         return res.json(newArr);
@@ -110,9 +110,7 @@ app.post('/api/cart/', (req, res, next) => {
       const productRows = result.rows;
       const price = result.rows[0].price;
       if (!productRows) {
-        res.status(400).json({
-          error: 'No data to return'
-        });
+        throw new ClientError('No data to return');
       }
       if (typeof req.session.cartId === 'undefined') {
         const sql = `insert into "carts" ("cartId", "createdAt")
@@ -124,15 +122,8 @@ app.post('/api/cart/', (req, res, next) => {
             return { cartId, price };
           });
       } else {
-        const sql = `select "cartId"
-         from "carts"
-         where "cartId" = $1`;
         const values = [req.session.cartId];
-        return db.query(sql, values)
-          .then(result => {
-            const cartId = result.rows[0].cartId;
-            return { cartId, price };
-          });
+        return { values, price };
       }
     })
     .then(result => {
