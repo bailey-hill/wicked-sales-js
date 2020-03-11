@@ -11,9 +11,15 @@ class App extends React.Component {
       view: {
         name: 'catalog',
         params: {}
-      }
+      },
+      cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -25,6 +31,24 @@ class App extends React.Component {
     });
   }
 
+  getCartItems() {
+    fetch('/api/cart/')
+      .then(response => response.json())
+      .then(data => {
+        return this.setState({ cart: data });
+      });
+  }
+
+  cardItemCount() {
+    const data = this.state.cart;
+    let total = 0;
+    for (let i = 0; i < data.length; i++) {
+      total += data[i].product;
+    }
+    Number(total);
+    return total;
+  }
+
   render() {
     const setView = this.setView;
     const viewName = this.state.view.name;
@@ -32,7 +56,7 @@ class App extends React.Component {
     if (viewName === 'catalog') {
       return (
         <div>
-          <Header />
+          <Header cardItemCount={this.cardItemCount()}/>
           <ProductList setView={setView}/>
         </div>
       );
