@@ -5,10 +5,15 @@ class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.setView3 = this.setView3.bind(this);
+    this.setView5 = this.setView5.bind(this);
   }
 
   setView3(event) {
     this.props.setView('catalog', {});
+  }
+
+  setView5(event) {
+    this.props.setView('checkout', {});
   }
 
   render() {
@@ -40,7 +45,8 @@ class CartSummary extends React.Component {
           }
           <div className="w-100 d-flex flex-row justify-content-space-between">
             <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
-            <button type="button" className="ml-2 btn btn-primary">Checkout</button>
+            <button type="button" className="ml-2 btn btn-primary"
+              onClick={this.setView5}>Checkout</button>
           </div>
         </div>
       );
