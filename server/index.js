@@ -159,6 +159,32 @@ app.post('/api/cart/', (req, res, next) => {
     });
 });
 
+app.post('api/orders', (req, res, next) => {
+  const cartId = req.session.cartId;
+  // const {name, creditCard, shippingAddress} = req.body
+  const name = req.body.name;
+  const creditCard = req.body.creditCard;
+  const shippingAddress = req.body.shippingAddress;
+  if (!req.session.cartId) {
+    res.status(400).json({
+      error: `Product ID ${cartId} not found`
+    });
+  }
+  if (!name || !creditCard || !shippingAddress) {
+    res.status(400).json({
+      error: 'Insert name, creditCard, and shippingAddress'
+    });
+  }
+  const text = 'insert into "orders" ("name", "creditCard", "shippingAddress") values($1, $2, $3)';
+  const values = [name, creditCard, shippingAddress];
+  db.query(text, values)
+    .then(result => {
+      const order = result.rows[0];
+      res.status(201).json(order);
+
+    });
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
