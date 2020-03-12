@@ -84,9 +84,7 @@ app.get('/api/cart/', (req, res, next) => {
     return db.query(sql, values)
       .then(result => {
         const cartItem = result.rows;
-        const newArr = [];
-        newArr.push(cartItem);
-        return res.json(newArr);
+        return res.json(cartItem);
       });
   }
 });
@@ -123,6 +121,7 @@ app.post('/api/cart/', (req, res, next) => {
           });
       } else {
         res.json(result.rows);
+        return { cartId: req.session.cartId, price };
       }
     })
     .then(result => {
