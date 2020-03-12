@@ -14,3 +14,16 @@ p {
 .images {
   width: 80%;
 }
+
+.image {
+  width: 70%;
+}
+
+.cartItems {
+  width: 70%;
+}
+
+.myCart {
+  width: 100%;
+  text-align: center;
+}
