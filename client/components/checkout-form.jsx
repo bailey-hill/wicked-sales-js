@@ -10,10 +10,10 @@ class CheckoutForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.setView3 = this.setView3.bind(this);
+    this.goToCatalog = this.goToCatalog.bind(this);
   }
 
-  setView3(event) {
+  goToCatalog(event) {
     this.props.setView('catalog', {});
   }
 
@@ -56,10 +56,10 @@ class CheckoutForm extends React.Component {
   render() {
     return (
       <div>
-        <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; continue shopping</div>
-        <form className="d-flex justify-content-start form" onSubmit={this.handleSubmit}>
-          <h2 className="checkoutCart">My Cart</h2>
-          <h5 className="checkoutPrice text-muted">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>
+        <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; continue shopping</div>
+        <form className="d-flex justify-content-center w-100 align-items-center flex-column form" onSubmit={this.handleSubmit}>
+          <h2 className="w-100 text-center checkoutCart">My Cart</h2>
+          <h5 className="w-100 text-center checkoutPrice text-muted">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>
           <div className="submissionRow">
             <div className="mb-1">Name</div>
             <input className="form-control" type="text" id="name"
@@ -80,7 +80,7 @@ class CheckoutForm extends React.Component {
             91976"
               onChange={this.handleChange} />
           </div>
-          <div className="orderButton">
+          <div className="d-flex justify-content-start orderButton">
             <button className="mt-3 mr-3 btn btn-primary" onSubmit={this.handleSubmit}
               type="submit" value="Submit">Place Order</button>
             <input className="mt-3 btn btn-light" type="reset" value="Cancel" />

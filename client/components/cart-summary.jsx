@@ -4,15 +4,15 @@ import CartSummaryItem from './cart-summary-item';
 class CartSummary extends React.Component {
   constructor(props) {
     super(props);
-    this.setView3 = this.setView3.bind(this);
-    this.setView5 = this.setView5.bind(this);
+    this.goToCatalog = this.goToCatalog.bind(this);
+    this.goToCheckout = this.goToCheckout.bind(this);
   }
 
-  setView3(event) {
+  goToCatalog(event) {
     this.props.setView('catalog', {});
   }
 
-  setView5(event) {
+  goToCheckout(event) {
     this.props.setView('checkout', {});
   }
 
@@ -20,8 +20,8 @@ class CartSummary extends React.Component {
     if (this.props.cart.length === 0) {
       return (
         <div>
-          <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
-          <h2 className="myCart text-muted">
+          <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          <h2 className="w-100 text-center myCart text-muted">
           Your cart is empty
           </h2>
         </div>
@@ -29,8 +29,8 @@ class CartSummary extends React.Component {
     } else {
       return (
         <div className="container cartItems d-flex flex-wrap justify-content-space-between">
-          <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
-          <h2 className="myCart">My Cart</h2>
+          <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          <h2 className="w-100 text-center myCart">My Cart</h2>
           {this.props.cart.map(item => {
             return (
               <CartSummaryItem
@@ -46,7 +46,7 @@ class CartSummary extends React.Component {
           <div className="mb-3 w-100 d-flex flex-row justify-content-space-between">
             <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
             <button type="button" className="mb-3 ml-2 btn btn-primary"
-              onClick={this.setView5}>Checkout</button>
+              onClick={this.goToCheckout}>Checkout</button>
           </div>
         </div>
       );
