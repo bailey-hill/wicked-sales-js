@@ -27,3 +27,15 @@ p {
   width: 100%;
   text-align: center;
 }
+
+.form {
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.submissionRow {
+  width: 40%;
+}

@@ -39,7 +39,7 @@ class CheckoutForm extends React.Component {
       creditCard: this.state.creditCard,
       shippingAddress: this.state.shippingAddress
     };
-    this.props.addGrade(newSubmission);
+    this.props.placeOrder(newSubmission);
     this.setState({
       name: '',
       creditCard: '',
@@ -51,20 +51,20 @@ class CheckoutForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit}>
           <div className="submissionRow">
             <div>Name</div>
             <input className="form-control" type="text" id="name"
-              placeholder="Name"
+              placeholder="John F. Kennedy"
               onChange={this.handleChange} />
           </div>
           <div className="submissionRow">
             <div>Credit Card</div>
             <input className="form-control" type="text" id="creditCard"
-              placeholder="Credit Card"
+              placeholder="1234-1234-1234-1234"
               onChange={this.handleChange} />
           </div>
-          <div>
+          <div className="submissionRow">
             <div>Shipping Address</div>
             <textarea className="form-control" type="number" id="shippingAddress"
               placeholder="123 Rick Roll Avenue

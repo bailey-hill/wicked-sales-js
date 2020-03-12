@@ -20,6 +20,7 @@ class App extends React.Component {
     this.cartItemCount = this.cartItemCount.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.totalPrice = this.totalPrice.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -72,7 +73,7 @@ class App extends React.Component {
     return total;
   }
 
-  placeHolder(orderDetails) {
+  placeOrder(orderDetails) {
     fetch('/api/orders/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -121,7 +122,8 @@ class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.cartItemCount()} />
-          <CheckoutForm totalPrice={this.totalPrice()} setView={setView}
+          <CheckoutForm placeOrder={this.placeOrder}
+            totalPrice={this.totalPrice()} setView={setView}
             viewParams={viewParams} cart={this.state.cart} />
         </div>
       );
