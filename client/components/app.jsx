@@ -71,6 +71,24 @@ class App extends React.Component {
     return total;
   }
 
+  placeHolder(orderDetails) {
+    fetch('/api/orders/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderDetails)
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          view: {
+            name: 'catalog',
+            params: {}
+          },
+          cart: []
+        });
+      });
+  }
+
   render() {
     const setView = this.setView;
     const viewName = this.state.view.name;
