@@ -7,7 +7,7 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
-    this.setView2 = this.setView2.bind(this);
+    this.goToDetails = this.goToDetails.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class ProductList extends React.Component {
       });
   }
 
-  setView2(event) {
+  goToDetails(event) {
     const productId = Number(event.currentTarget.getAttribute('id'));
     this.props.setView('details', { productId });
   }
@@ -38,7 +38,7 @@ class ProductList extends React.Component {
               image={product.image}
               price={product.price}
               shortDescription={product.shortDescription}
-              setView2={this.setView2}
+              goToDetails={this.goToDetails}
               productId={product.productId}
             />);
         })

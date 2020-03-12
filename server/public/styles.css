@@ -23,7 +23,18 @@ p {
   width: 70%;
 }
 
-.myCart {
-  width: 100%;
-  text-align: center;
+.submissionRow {
+  width: 40%;
+}
+
+.checkoutCart {
+    margin-right: 395px;
+}
+
+.checkoutPrice {
+    margin-right: 339px;
+}
+
+.orderButton {
+  width: 40%;
 }

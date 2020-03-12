@@ -6,7 +6,7 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
-    this.setView3 = this.setView3.bind(this);
+    this.goToCatalog = this.goToCatalog.bind(this);
   }
 
   componentDidMount() {
@@ -17,7 +17,7 @@ class ProductDetails extends React.Component {
       });
   }
 
-  setView3(event) {
+  goToCatalog(event) {
     this.props.setView('catalog', {});
   }
 
@@ -31,7 +31,7 @@ class ProductDetails extends React.Component {
 
             <div className="d-flex justify-content-space-between align-items-start flex-row">
               <div>
-                <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
+                <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
                 <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
               <div className="d-flex align-items-start flex-column">
