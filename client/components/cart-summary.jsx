@@ -12,11 +12,14 @@ class CartSummary extends React.Component {
   }
 
   render() {
-    if (this.props.cart === []) {
+    if (this.props.cart.length === 0) {
       return (
-        <h2>
+        <div>
+          <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
+          <h2 className="myCart text-muted">
           Your cart is empty
-        </h2>
+          </h2>
+        </div>
       );
     } else {
       return (
