@@ -159,9 +159,8 @@ app.post('/api/cart/', (req, res, next) => {
     });
 });
 
-app.post('api/orders', (req, res, next) => {
+app.post('/api/orders/', (req, res, next) => {
   const cartId = req.session.cartId;
-  // const {name, creditCard, shippingAddress} = req.body
   const name = req.body.name;
   const creditCard = req.body.creditCard;
   const shippingAddress = req.body.shippingAddress;
@@ -169,19 +168,30 @@ app.post('api/orders', (req, res, next) => {
     res.status(400).json({
       error: `Product ID ${cartId} not found`
     });
+    return;
   }
   if (!name || !creditCard || !shippingAddress) {
     res.status(400).json({
       error: 'Insert name, creditCard, and shippingAddress'
     });
+    return;
   }
-  const text = 'insert into "orders" ("name", "creditCard", "shippingAddress") values($1, $2, $3)';
-  const values = [name, creditCard, shippingAddress];
+  const text = `insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+   values($1, $2, $3, $4)
+   returning *
+   `;
+  const values = [cartId, name, creditCard, shippingAddress];
   db.query(text, values)
     .then(result => {
+      delete req.session.cartId;
       const order = result.rows[0];
       res.status(201).json(order);
-
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
     });
 });
 
