@@ -7,7 +7,7 @@ class CartSummary extends React.Component {
     this.state = {
       cartItems: []
     };
-    this.setView2 = this.setView2.bind(this);
+    this.setView3 = this.setView3.bind(this);
   }
 
   componentDidMount() {
@@ -22,9 +22,15 @@ class CartSummary extends React.Component {
       });
   }
 
+  setView3(event) {
+    this.props.setView('catalog', {});
+  }
+
   render() {
     return (
       <div className="container d-flex flex-wrap justify-content-center">
+        <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
+        <h2>My Cart</h2>
         {this.props.products.map(product => {
           return (
             <CartSummaryItem
@@ -37,6 +43,7 @@ class CartSummary extends React.Component {
             />);
         })
         }
+        <div>Item Total: </div>
       </div>
     );
   }

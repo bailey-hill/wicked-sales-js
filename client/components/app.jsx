@@ -67,14 +67,14 @@ class App extends React.Component {
     if (viewName === 'catalog') {
       return (
         <div>
-          <Header cartItemCount={this.cartItemCount()}/>
+          <Header setView={setView} cartItemCount={this.cartItemCount()}/>
           <ProductList setView={setView}/>
         </div>
       );
     } if (viewName === 'details') {
       return (
         <div>
-          <Header cartItemCount={this.cartItemCount()}/>
+          <Header setView={setView} cartItemCount={this.cartItemCount()}/>
           <ProductDetails addToCart={this.addToCart} product={this.props.product}
             setView={setView} viewParams={viewParams} />
         </div>
@@ -83,7 +83,7 @@ class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.cartItemCount()} />
-          <CartSummary />
+          <CartSummary setView={setView} cart={this.state.cart}/>
         </div>
       );
     }
