@@ -39,3 +39,21 @@ p {
 .submissionRow {
   width: 40%;
 }
+
+.checkoutCart {
+width: 100%;
+    text-align: center;
+    margin-right: 395px;
+}
+
+.checkoutPrice {
+    width: 100%;
+    text-align: center;
+    margin-right: 339px;
+}
+
+.orderButton {
+  width: 40%;
+  display: flex;
+  justify-content: start;
+}
