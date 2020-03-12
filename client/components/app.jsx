@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
@@ -43,12 +42,10 @@ class App extends React.Component {
 
   cartItemCount() {
     const length = this.state.cart.length;
-    Number(length);
     return length;
   }
 
   addToCart(product) {
-    // console.log(product);
     fetch('/api/cart/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -69,14 +66,14 @@ class App extends React.Component {
     if (viewName === 'catalog') {
       return (
         <div>
-          <Header cardItemCount={this.cartItemCount()}/>
+          <Header cartItemCount={this.cartItemCount()}/>
           <ProductList setView={setView}/>
         </div>
       );
     } if (viewName === 'details') {
       return (
         <div>
-          <Header />
+          <Header cartItemCount={this.cartItemCount()}/>
           <ProductDetails addToCart={this.addToCart} product={this.props.product}
             setView={setView} viewParams={viewParams} />
         </div>
