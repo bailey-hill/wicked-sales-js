@@ -38,7 +38,10 @@ class CartSummary extends React.Component {
               />);
           })
           }
-          <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
+          <div className="w-100 d-flex flex-row justify-content-space-between">
+            <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
+            <button type="button" className="ml-2 btn btn-primary">Checkout</button>
+          </div>
         </div>
       );
     }
