@@ -22,3 +22,8 @@ p {
 .cartItems {
   width: 70%;
 }
+
+.myCart {
+  width: 100%;
+  text-align: center;
+}

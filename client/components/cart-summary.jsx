@@ -22,7 +22,7 @@ class CartSummary extends React.Component {
       return (
         <div className="container cartItems d-flex flex-wrap justify-content-space-between">
           <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; back to catalog</div>
-          <h2>My Cart</h2>
+          <h2 className="myCart">My Cart</h2>
           {this.props.cart.map(item => {
             return (
               <CartSummaryItem
@@ -35,7 +35,7 @@ class CartSummary extends React.Component {
               />);
           })
           }
-          <div>Item Total: </div>
+          <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
         </div>
       );
     }
