@@ -10,6 +10,11 @@ class CheckoutForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setView3 = this.setView3.bind(this);
+  }
+
+  setView3(event) {
+    this.props.setView('catalog', {});
   }
 
   handleChange(event) {
@@ -51,7 +56,7 @@ class CheckoutForm extends React.Component {
   render() {
     return (
       <div>
-
+        <div className="mt-1 ml-2 text-muted" onClick={this.setView3}> &lt; continue shopping</div>
         <form className="d-flex justify-content-start form" onSubmit={this.handleSubmit}>
           <h2 className="checkoutCart">My Cart</h2>
           <h5 className="checkoutPrice text-muted">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>

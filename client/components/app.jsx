@@ -10,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        // catalog
+        name: 'checkout',
         params: {}
       },
       cart: []
