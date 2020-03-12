@@ -3,7 +3,7 @@ import React from 'react';
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.setView2 = this.setView2.bind(this);
+    this.setView4 = this.setView4.bind(this);
   }
 
   setView4(event) {

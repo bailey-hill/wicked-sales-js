@@ -83,7 +83,7 @@ class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.cartItemCount()} />
-          <CartSummary setView={setView} cart={this.state.cart}/>
+          <CartSummary setView={setView} viewParams={viewParams} cart={this.state.cart}/>
         </div>
       );
     }

@@ -3,10 +3,10 @@ import React from 'react';
 class CartSummaryItem extends React.Component {
   render() {
     return (
-      <div id={this.props.productId} className="card d-flex align-items-center justify-content-center">
+      <div id={this.props.cartItemId} className="card mb-3 d-flex align-items-center justify-content-space-between">
         <div className="card-body p-0 d-flex flex-row">
           <div className="img-container">
-            <img className="card-img-top" src={this.props.image} />
+            <img className="image" src={this.props.image} />
           </div>
           <div className="d-flex justify-content-space-between align-items-start flex-column">
             <h5 className="card-title">{this.props.name}</h5>
