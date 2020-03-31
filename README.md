@@ -25,6 +25,10 @@ Try the application live at https://catalog.baileyohill.com/
 ![alt text](./image/wicked-sales.gif)
 
 ## Development
+### System Requirements
+  - Node.js 10 or higher.
+  - NPM 6 or higher.
+
 ### Getting Started
 1. Clone the repository.
 
