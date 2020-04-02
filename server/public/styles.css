@@ -38,3 +38,11 @@ p {
 .orderButton {
   width: 40%;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.card-width {
+  width: 30%;
+}
