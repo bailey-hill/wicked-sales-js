@@ -20,7 +20,7 @@ class CartSummary extends React.Component {
     if (this.props.cart.length === 0) {
       return (
         <div>
-          <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          <div className="pointer mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
           <h2 className="w-100 text-center myCart text-muted">
           Your cart is empty
           </h2>
@@ -29,7 +29,7 @@ class CartSummary extends React.Component {
     } else {
       return (
         <div className="container cartItems d-flex flex-wrap justify-content-space-between">
-          <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          <div className="pointer mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
           <h2 className="w-100 text-center myCart">My Cart</h2>
           {this.props.cart.map(item => {
             return (

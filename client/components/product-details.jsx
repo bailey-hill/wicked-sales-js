@@ -31,7 +31,7 @@ class ProductDetails extends React.Component {
 
             <div className="d-flex justify-content-space-between align-items-start flex-row">
               <div>
-                <div className="mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
+                <div className="pointer mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
                 <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
               <div className="d-flex align-items-start flex-column">
