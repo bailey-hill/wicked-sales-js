@@ -61,21 +61,21 @@ class CheckoutForm extends React.Component {
       <div>
         <div className="mt-1 ml-2 text-muted pointer" onClick={this.goToCatalog}> &lt; continue shopping</div>
         <form className="d-flex justify-content-center w-100 align-items-center flex-column form" onSubmit={this.handleSubmit}>
-          <h2 className="w-100 text-center checkoutCart">My Cart</h2>
-          <h5 className="w-100 text-center checkoutPrice text-muted">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>
-          <div className="submissionRow">
+          <h2>My Cart</h2>
+          <h5 className="text-muted">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>
+          <div className="w-75 submissionRow">
             <div className="mb-1">Name</div>
             <input className="form-control" type="text" id="name"
               placeholder="John F. Kennedy"
               onChange={this.handleChange} />
           </div>
-          <div className="submissionRow">
+          <div className="w-75 submissionRow">
             <div className="mb-1">Credit Card</div>
             <input className="form-control" type="text" id="creditCard"
               placeholder="1234-1234-1234-1234"
               onChange={this.handleChange} />
           </div>
-          <div className="submissionRow">
+          <div className="w-75 submissionRow">
             <div className="mb-1">Shipping Address</div>
             <textarea className="form-control" type="number" id="shippingAddress"
               placeholder="123 Rick Roll Avenue
