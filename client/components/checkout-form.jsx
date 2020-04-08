@@ -84,7 +84,8 @@ class CheckoutForm extends React.Component {
               onChange={this.handleChange} />
           </div>
           <div className="d-flex justify-content-start orderButton">
-            <button className="mt-3 mr-3 btn btn-primary" onSubmit={this.handleSubmit}
+            <button disabled={!(this.state.name && this.state.creditCard && this.state.shippingAddress)}
+              className="mt-3 mr-3 btn btn-primary" onSubmit={this.handleSubmit}
               type="submit" value="Submit">Place Order</button>
             <input className="mt-3 btn btn-light" type="reset" value="Cancel" />
           </div>
