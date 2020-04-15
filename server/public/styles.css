@@ -44,3 +44,7 @@ p {
     width: 100%;
   }
 }
+
+.header {
+  background-color: rgb(243,234,95);
+}
