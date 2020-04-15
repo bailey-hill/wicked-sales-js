@@ -259,6 +259,9 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 5	Fresh Orange	1699	/images/can4.jpg	Fresh Orange Seltzer 6.5% ABV	The Sunny Side of Life!\rAroma of freshly squeezed with a natural lively citrus delivery.
 6	Wild Strawberry	1699	/images/can5.jpg	Strawberry Seltzer 6.5% ABV	Strawberry Delicious!\rA subtle fruity strawberry blend.
 7	Tangy Lemon	1699	/images/can6.jpg	Lemon Seltzer 6.5% ABV	A Lively Lemon delight!\rBright flavor, slightly tart and sweet.
+8	Watermelon and Strawberry	1699	/images/can7.jpg	Watermelon and Strawberry Seltzer 6.5% ABV	A watermelon and strawberry summer sensation!\rBright flavor, slightly tangy and sweet.
+9	Blackcurrent Burst	1699	/images/can8.jpg	Blackcurrent Burst Seltzer 6.5% ABV	Blackberrycurrent.\rSweet & sour blackberry notes and the natural earthiness of crisp cucumber create this unique new flavor combination.
+10	Pressed Apple	1699	/images/can9.jpg	Pressed Apple 6.5% ABV	Pressed apple express!\rBolder flavors, perfect for a summer afternoon or spring gathering.
 \.
 
 
@@ -287,7 +290,7 @@ SELECT pg_catalog.setval('public."orders_orderId_seq"', 3, true);
 -- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."products_productId_seq"', 7, true);
+SELECT pg_catalog.setval('public."products_productId_seq"', 10, true);
 
 
 --
