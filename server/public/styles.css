@@ -46,5 +46,18 @@ p {
 }
 
 .header {
-  background-color: rgb(243,234,95);
+  background-color: #f3ea5f;
+}
+
+.text-general {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.text-name {
+  color: #ff48c4;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.text-description {
+  color: black;
 }
