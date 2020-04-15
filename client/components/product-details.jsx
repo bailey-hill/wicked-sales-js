@@ -27,7 +27,7 @@ class ProductDetails extends React.Component {
     } else {
       return (
         <div className="d-flex align-items-center justify-content-center">
-          <div className="w-75 m-3 card d-flex align-items-center justify-content-center" id={this.props.productId}>
+          <div className="w-75 m-3 d-flex align-items-center justify-content-center" id={this.props.productId}>
 
             <div className="d-flex justify-content-space-between align-items-start flex-row">
               <div>
@@ -35,13 +35,14 @@ class ProductDetails extends React.Component {
                 <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
               <div className="d-flex align-items-start flex-column">
-                <h3 className="mt-5 ml-2">{this.state.product.name}</h3>
-                <h5 className="text-muted">{`$ ${(this.state.product.price / 100).toFixed(2)}`}</h5>
-                <p>{this.state.product.shortDescription}</p>
-                <button type="button" className="btn btn-primary" onClick={() => this.props.addToCart(this.state.product)}>Add to Cart</button>
+                <h3 className="mt-5 ml-2 text-name">{this.state.product.name}</h3>
+                <h5 className="text-muted text-general mt-2">{`$ ${(this.state.product.price / 100).toFixed(2)}`}</h5>
+                <p className="text-general mt-2">{this.state.product.shortDescription}</p>
+                <button type="button" className="btn btn-dark rounded-pill btn-block mt-2" onClick={() => this.props.addToCart(this.state.product)}>Add to Cart</button>
+                <p className="text-general mt-3 line-height">{this.state.product.longDescription}</p>
               </div>
             </div>
-            <p>{this.state.product.longDescription}</p>
+
           </div>
         </div>
       );

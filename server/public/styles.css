@@ -51,6 +51,7 @@ p {
 
 .text-general {
   font-family: 'Ubuntu', sans-serif;
+  color: black;
 }
 
 .text-header {
@@ -64,6 +65,14 @@ p {
   font-weight: 700;
 }
 
+.text-short {
+  color: #c04df9;
+}
+
 .text-description {
   color: black;
+}
+
+.line-height {
+  line-height: 1.4;
 }
