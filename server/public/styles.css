@@ -53,9 +53,15 @@ p {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.text-header {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
 .text-name {
   color: #ff48c4;
   font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
 }
 
 .text-description {
