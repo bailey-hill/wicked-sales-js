@@ -26,13 +26,15 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="d-flex align-items-center container-fluid flex-wrap">
-          <div className="pointer mt-1 ml-2 text-muted row" onClick={this.goToCatalog}> &lt; back to catalog</div>
+        <div className="d-flex align-items-center container flex-wrap">
+          <div className="w-100">
+            <div className="pointer mt-1 ml-2 text-muted col" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          </div>
           <div className=" d-flex align-items-center justify-content-center row p-5" id={this.props.productId}>
 
             <div className="d-flex justify-content-space-between align-items-start row">
 
-              <div className="w-100 d-flex  col">
+              <div className="w-100 d-flex col">
 
                 <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
