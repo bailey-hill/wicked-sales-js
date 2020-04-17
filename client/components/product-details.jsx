@@ -28,7 +28,7 @@ class ProductDetails extends React.Component {
       return (
         <div className="d-flex align-items-center container flex-wrap">
           <div className="w-100">
-            <div className="pointer mt-2 text-muted col" onClick={this.goToCatalog}> &lt; back to catalog</div>
+            <div className="pointer mt-2 text-muted col text-general" onClick={this.goToCatalog}> &lt; back to catalog</div>
           </div>
           <div className=" d-flex align-items-center justify-content-center row p-5" id={this.props.productId}>
 
