@@ -17,10 +17,10 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className="d-flex justify-content-space-between navbar header sticky-top">
-        <h2 onClick={this.goToCatalog} className="pointer navbar-brand ml-5 text-header"><i className="short-fall-icon fas fa-stroopwafel">
+      <nav className="d-flex justify-content-between navbar header sticky-top">
+        <h2 onClick={this.goToCatalog} className="pointer navbar-brand text-header"><i className="short-fall-icon fas fa-stroopwafel">
         </i>  Short Fall Brewery</h2>
-        <h2 onClick={this.goToCart} className="pointer navbar-brand mr-5 text-header" ><span>
+        <h2 onClick={this.goToCart} className="pointer navbar-brand text-header" ><span>
           {this.props.cartItemCount}</span> Item <i className="fas fa-shopping-cart"></i></h2>
       </nav>
     );

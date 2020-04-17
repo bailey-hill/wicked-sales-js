@@ -12,7 +12,8 @@ p {
 }
 
 .images {
-  width: 80%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .image {
@@ -37,12 +38,6 @@ p {
 
 .card-width {
   width: 30%;
-}
-
-@media only screen and (max-width: 768px) {
-  .mobile {
-    width: 100%;
-  }
 }
 
 .header {
@@ -75,4 +70,10 @@ p {
 
 .line-height {
   line-height: 1.4;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile {
+    width: 100%;
+  }
 }
