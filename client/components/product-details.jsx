@@ -34,11 +34,11 @@ class ProductDetails extends React.Component {
 
             <div className="d-flex justify-content-space-between align-items-start row">
 
-              <div className="w-100 d-flex col">
+              <div className="w-100 d-flex col-sm-8">
 
                 <img className="mt-2 ml-2 images" src={this.state.product.image} />
               </div>
-              <div className="d-flex align-items-start flex-column col">
+              <div className="d-flex align-items-start flex-column col-sm-4">
                 <h3 className="mt-5 ml-2 text-name">{this.state.product.name}</h3>
                 <h5 className="text-muted text-general mt-2">{`$ ${(this.state.product.price / 100).toFixed(2)}`}</h5>
                 <p className="text-general mt-2">{this.state.product.shortDescription}</p>
