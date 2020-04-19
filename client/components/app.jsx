@@ -113,7 +113,7 @@ class App extends React.Component {
     } if (viewName === 'cart') {
       return (
         <div>
-          <Header cartItemCount={this.cartItemCount()} />
+          <Header setView={setView} cartItemCount={this.cartItemCount()} />
           <CartSummary totalPrice={this.totalPrice()} setView={setView}
             viewParams={viewParams} cart={this.state.cart}/>
         </div>
@@ -121,7 +121,7 @@ class App extends React.Component {
     } if (viewName === 'checkout') {
       return (
         <div>
-          <Header cartItemCount={this.cartItemCount()} />
+          <Header setView={setView} cartItemCount={this.cartItemCount()} />
           <CheckoutForm placeOrder={this.placeOrder}
             totalPrice={this.totalPrice()} setView={setView}
             viewParams={viewParams} cart={this.state.cart} />
