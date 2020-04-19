@@ -29,8 +29,8 @@ class CartSummary extends React.Component {
     } else {
       return (
         <div className="container cartItems d-flex flex-wrap justify-content-space-between">
-          <div className="pointer mt-1 ml-2 text-muted" onClick={this.goToCatalog}> &lt; back to catalog</div>
-          <h2 className="w-100 text-center myCart">My Cart</h2>
+          <div className="pointer mt-1 ml-2 text-muted text-general" onClick={this.goToCatalog}> &lt; back to catalog</div>
+          <h2 className="w-100 text-center myCart text-general">My Cart</h2>
           {this.props.cart.map(item => {
             return (
               <CartSummaryItem
@@ -43,11 +43,12 @@ class CartSummary extends React.Component {
               />);
           })
           }
-          <div className="mb-3 w-100 d-flex flex-row justify-content-space-between">
-            <h3>Total: <span className="text-muted">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
-            <button type="button" className="mb-3 ml-2 btn btn-primary"
-              onClick={this.goToCheckout}>Checkout</button>
+          <div className="ml-4 w-100 d-flex flex-row justify-content-space-between">
+            <h3 className="text-general">Total: <span className="text-muted text-general">{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h3>
+
           </div>
+          <button type="button" className="mb-3 w-25 d-block ml-2 btn-dark rounded-pill btn-lg"
+            onClick={this.goToCheckout}>Checkout</button>
         </div>
       );
     }
