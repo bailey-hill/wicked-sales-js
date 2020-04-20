@@ -63,6 +63,21 @@ class App extends React.Component {
       });
   }
 
+  removeFromCart(cartItemId) {
+    fetch('/api/cart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cartItemId })
+    })
+      .then(() => {
+        const [...cart] = this.state.cart.filter(a => a.cartItemId !== cartItemId);
+        this.setState({ cart });
+      })
+      .catch(err => console.error(err));
+  }
+
   totalPrice() {
     const cart = this.state.cart;
     let total = 0;
@@ -115,7 +130,8 @@ class App extends React.Component {
         <div>
           <Header setView={setView} cartItemCount={this.cartItemCount()} />
           <CartSummary totalPrice={this.totalPrice()} setView={setView}
-            viewParams={viewParams} cart={this.state.cart}/>
+            viewParams={viewParams} cart={this.state.cart}
+            removeFromCart={cartItemId => this.removeFromCart(cartItemId)}/>
         </div>
       );
     } if (viewName === 'checkout') {
