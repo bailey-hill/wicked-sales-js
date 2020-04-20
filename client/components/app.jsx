@@ -72,7 +72,7 @@ class App extends React.Component {
       body: JSON.stringify({ cartItemId })
     })
       .then(() => {
-        const [...cart] = this.state.cart.filter(a => a.cartItemId !== cartItemId);
+        const [...cart] = this.state.cart.filter(item => item.cartItemId !== cartItemId);
         this.setState({ cart });
       })
       .catch(err => console.error(err));
