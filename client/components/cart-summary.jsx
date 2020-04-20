@@ -4,8 +4,15 @@ import CartSummaryItem from './cart-summary-item';
 class CartSummary extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      removing: null
+    };
     this.goToCatalog = this.goToCatalog.bind(this);
     this.goToCheckout = this.goToCheckout.bind(this);
+  }
+
+  setRemoving(productId) {
+    this.setState({ removing: productId });
   }
 
   goToCatalog(event) {
@@ -40,6 +47,7 @@ class CartSummary extends React.Component {
                 price={item.price}
                 shortDescription={item.shortDescription}
                 id={item.cartItemId}
+                removeFromCart={productId => this.setRemoving(productId)}
               />);
           })
           }
