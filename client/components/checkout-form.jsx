@@ -66,21 +66,19 @@ class CheckoutForm extends React.Component {
           <div className="w-75 submissionRow">
             <div className="mb-1">Name</div>
             <input className="form-control" type="text" id="name"
-              placeholder="John F. Kennedy"
+              placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
           </div>
           <div className="w-75 submissionRow">
             <div className="mb-1">Credit Card</div>
             <input className="form-control" type="text" id="creditCard"
-              placeholder="1234-1234-1234-1234"
+              placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
           </div>
           <div className="w-75 submissionRow">
             <div className="mb-1">Shipping Address</div>
             <textarea className="form-control" type="number" id="shippingAddress"
-              placeholder="123 Rick Roll Avenue
-            Hollywood, CA
-            91976"
+              placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
           </div>
           <div className="d-flex justify-content-start orderButton">
