@@ -17,9 +17,18 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className="d-flex justify-content-between navbar header sticky-top">
+      <nav className="d-flex justify-content-around navbar header sticky-top">
         <h2 onClick={this.goToCatalog} className="pointer navbar-brand text-header"><i className="short-fall-icon fas fa-stroopwafel">
         </i>  Short Fall Brewery</h2>
+        <div className="w-50">
+          <div className="alert alert-warning alert-dismissible fade show text-center mb-0" role="alert">
+            <strong>This is a demo website! </strong>
+          No real purchases will be made.
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
         <h2 onClick={this.goToCart} className="pointer navbar-brand text-header" ><span>
           {this.props.cartItemCount}</span> Item <i className="fas fa-shopping-cart"></i></h2>
       </nav>
