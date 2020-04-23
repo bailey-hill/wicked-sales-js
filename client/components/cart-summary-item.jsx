@@ -21,25 +21,6 @@ class CartSummaryItem extends React.Component {
               Remove Item</button>
           </div>
         </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-general" id="exampleModalLabel">{this.props.name}</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body text-general">
-                Are you sure you want to remove {this.props.name} from your cart?
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary rounded-pill" data-dismiss="modal">Cancel</button>
-                <button type="button" className="btn btn-danger rounded-pill">Remove</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
