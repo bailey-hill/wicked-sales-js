@@ -12,7 +12,9 @@ class CartSummary extends React.Component {
   }
 
   setRemoving(productId) {
-    this.setState({ removing: productId });
+    this.setState({
+      removing: productId
+    });
   }
 
   goToCatalog(event) {
@@ -55,15 +57,16 @@ class CartSummary extends React.Component {
           <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title text-general" id="exampleModalLabel">{this.props.name}</h5>
+                {/* <div className="modal-header">
+                  <h5 className="modal-title text-general" id="exampleModalLabel">{this.props.cart[event.target.value].name}</h5>
+                </div> */}
+                <div className="modal-body text-general">
+                  Are you sure you want to remove from your cart?
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div className="modal-body text-general">
-                  Are you sure you want to remove this item from your cart?
-                </div>
+
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary rounded-pill" data-dismiss="modal">Cancel</button>
                   <button onClick={() => {
