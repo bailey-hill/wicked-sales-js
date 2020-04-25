@@ -5,7 +5,7 @@ class ProductListItem extends React.Component {
     return (
       <div id={this.props.productId} onClick={this.props.goToDetails} className="mobile row pointer card-width m-3 d-flex align-items-center justify-content-center">
         <div className="card-body p-0 d-flex flex-column justify-content-around">
-          <div className="img-container p-2">
+          <div className="img-container p-2 zoom">
             <img className="card-img-top" src={this.props.image} />
           </div>
           <div className="d-flex justify-content-space-between align-items-start flex-column">
