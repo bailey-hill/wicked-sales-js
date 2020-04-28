@@ -84,6 +84,16 @@ p {
   text-align: end;
 }
 
+.fa-times,
+.required {
+  color: red;
+}
+
+.fa-check {
+  color: green;
+}
+
+
 @media only screen and (max-width: 768px) {
   .mobile {
     width: 100%;
