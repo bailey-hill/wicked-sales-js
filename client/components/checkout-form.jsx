@@ -79,9 +79,10 @@ class CheckoutForm extends React.Component {
           </div>
           <div className="w-75 submissionRow mt-1">
             <div className="mb-1 text-general">Shipping Address</div>
-            <textarea className="form-control" type="number" id="shippingAddress"
+            <textarea style={{ borderColor: this.state.shippingAddress ? 'grey' : 'red' }} className="form-control" type="number" id="shippingAddress"
               placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
+            <div style={{ visibility: this.state.shippingAddress ? 'hidden' : 'visible' }} className="required text-general mt-1">A shipping address is required.</div>
           </div>
           <div className="d-flex justify-content-start orderButton w-75">
             <button disabled={!(this.state.name && this.state.creditCard && this.state.shippingAddress)}
