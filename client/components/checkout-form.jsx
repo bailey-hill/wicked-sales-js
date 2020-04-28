@@ -72,9 +72,10 @@ class CheckoutForm extends React.Component {
           </div>
           <div className="w-75 submissionRow mt-1">
             <div className="mb-1 text-general">Credit Card</div>
-            <input className="form-control" type="text" id="creditCard"
+            <input style={{ borderColor: this.state.creditCard.length === 16 ? 'grey' : 'red' }} className="form-control" type="text" id="creditCard"
               placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
+            <div style={{ visibility: this.state.creditCard.length === 16 ? 'hidden' : 'visible' }} className="required text-general mt-1">A valid card number is required.</div>
           </div>
           <div className="w-75 submissionRow mt-1">
             <div className="mb-1 text-general">Shipping Address</div>
