@@ -68,6 +68,7 @@ class CheckoutForm extends React.Component {
             <input className="form-control" type="text" id="name"
               placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
+            <div style={{ visibility: this.state.name ? 'hidden' : 'visible' }} className="required text-general mt-1">A name is required.</div>
           </div>
           <div className="w-75 submissionRow mt-1">
             <div className="mb-1 text-general">Credit Card</div>
