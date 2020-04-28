@@ -65,7 +65,7 @@ class CheckoutForm extends React.Component {
           <h5 className="text-muted text-general">Order Total: <span>{`$ ${(this.props.totalPrice / 100).toFixed(2)}`}</span></h5>
           <div className="w-75 submissionRow mt-1">
             <div className="mb-1 text-general">Name</div>
-            <input className="form-control" type="text" id="name"
+            <input style={{ borderColor: this.state.name ? 'grey' : 'red' }} className="form-control" type="text" id="name"
               placeholder="This is a demo website! Do not use personal information."
               onChange={this.handleChange} />
             <div style={{ visibility: this.state.name ? 'hidden' : 'visible' }} className="required text-general mt-1">A name is required.</div>
