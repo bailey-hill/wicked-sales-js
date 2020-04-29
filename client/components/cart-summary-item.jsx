@@ -19,10 +19,8 @@ class CartSummaryItem extends React.Component {
             <button onClick={() => this.removeItem()} className="btn btn-danger rounded-pill"
               type="button" data-toggle="modal" data-target="#exampleModal">
               Remove Item</button>
-            <form className="mt-3 ml-2">
-              <label className="text-general" htmlFor="quantity">Quantity: </label>
-              <input className="p-0 col-3 text-general ml-1" type="number" id="quantity" name="quantity">
-              </input>
+            <form className="mt-1 ml-2">
+              <label className="text-general" htmlFor="quantity">Quantity: {this.props.item.quantity}</label>
             </form>
           </div>
         </div>
