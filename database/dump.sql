@@ -19,6 +19,7 @@ SET row_security = off;
 ALTER TABLE ONLY public.products DROP CONSTRAINT products_pkey;
 ALTER TABLE ONLY public.orders DROP CONSTRAINT orders_pkey;
 ALTER TABLE ONLY public.carts DROP CONSTRAINT carts_pkey;
+ALTER TABLE ONLY public."cartItems" DROP CONSTRAINT "cartItems_uq";
 ALTER TABLE ONLY public."cartItems" DROP CONSTRAINT "cartItems_pkey";
 ALTER TABLE public.products ALTER COLUMN "productId" DROP DEFAULT;
 ALTER TABLE public.orders ALTER COLUMN "orderId" DROP DEFAULT;
@@ -74,7 +75,9 @@ CREATE TABLE public."cartItems" (
     "cartItemId" integer NOT NULL,
     "cartId" integer NOT NULL,
     "productId" integer NOT NULL,
-    price integer NOT NULL
+    price integer NOT NULL,
+    quantity numeric NOT NULL,
+    CONSTRAINT "cartItems_quantity_check" CHECK ((quantity > (0)::numeric))
 );
 
 
@@ -138,7 +141,9 @@ CREATE TABLE public.orders (
     name text NOT NULL,
     "creditCard" text NOT NULL,
     "shippingAddress" text NOT NULL,
-    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL,
+    quantity numeric NOT NULL,
+    CONSTRAINT orders_quantity_check CHECK ((quantity > (0)::numeric))
 );
 
 
@@ -228,7 +233,10 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 -- Data for Name: cartItems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
+COPY public."cartItems" ("cartItemId", "cartId", "productId", price, quantity) FROM stdin;
+114	55	2	1699	1
+116	55	3	1299	11
+115	55	4	1399	2
 \.
 
 
@@ -244,7 +252,7 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
+COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt", quantity) FROM stdin;
 \.
 
 
@@ -269,7 +277,7 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 104, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 127, true);
 
 
 --
@@ -299,6 +307,14 @@ SELECT pg_catalog.setval('public."products_productId_seq"', 10, true);
 
 ALTER TABLE ONLY public."cartItems"
     ADD CONSTRAINT "cartItems_pkey" PRIMARY KEY ("cartItemId");
+
+
+--
+-- Name: cartItems cartItems_uq; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."cartItems"
+    ADD CONSTRAINT "cartItems_uq" UNIQUE ("cartId", "productId");
 
 
 --
@@ -335,3 +351,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
