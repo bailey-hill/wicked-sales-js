@@ -68,11 +68,12 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart/', (req, res, next) => {
-  if (typeof req.session.cartId === 'undefined') {
+  if (!req.session.cartId) {
     res.json([]);
   } else {
     const sql = `select "c"."cartItemId",
       "c"."price",
+      "c"."quantity",
       "p"."productId",
       "p"."image",
       "p"."name",
@@ -109,7 +110,7 @@ app.post('/api/cart/', (req, res, next) => {
       if (productRows.length === 0) {
         throw new ClientError('No data to return', 400);
       } const price = result.rows[0].price;
-      if (typeof req.session.cartId === 'undefined') {
+      if (!req.session.cartId) {
         const sql = `insert into "carts" ("cartId", "createdAt")
         values (default, default)
         returning "cartId"`;
@@ -124,10 +125,12 @@ app.post('/api/cart/', (req, res, next) => {
     })
     .then(result => {
       req.session.cartId = result.cartId;
-      const sql = `insert into "cartItems" ("cartId", "productId", "price")
-      values ($1, $2, $3)
+      const sql = `insert into "cartItems" ("cartId", "productId", "price", "quantity")
+      values ($1, $2, $3, $4)
+      ON CONFLICT ("cartId", "productId") DO UPDATE
+      SET "quantity" = "cartItems"."quantity" + 1
       returning "cartItemId"`;
-      const values = [result.cartId, productId, result.price];
+      const values = [result.cartId, productId, result.price, 1];
       return db.query(sql, values)
         .then(result => {
           const cartItemId = result.rows[0].cartItemId;
@@ -137,6 +140,7 @@ app.post('/api/cart/', (req, res, next) => {
     ).then(result => {
       const sql = `select "c"."cartItemId",
       "c"."price",
+      "c"."quantity",
       "p"."productId",
       "p"."image",
       "p"."name",
@@ -182,6 +186,7 @@ app.post('/api/orders/', (req, res, next) => {
   const name = req.body.name;
   const creditCard = req.body.creditCard;
   const shippingAddress = req.body.shippingAddress;
+  const quantity = req.body.quantity;
   if (!req.session.cartId) {
     res.status(400).json({
       error: `Product ID ${cartId} not found`
@@ -194,11 +199,11 @@ app.post('/api/orders/', (req, res, next) => {
     });
     return;
   }
-  const text = `insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
-   values($1, $2, $3, $4)
+  const text = `insert into "orders" ("cartId", "name", "creditCard", "shippingAddress", "quantity")
+   values($1, $2, $3, $4, $5)
    returning *
    `;
-  const values = [cartId, name, creditCard, shippingAddress];
+  const values = [cartId, name, creditCard, shippingAddress, quantity];
   db.query(text, values)
     .then(result => {
       delete req.session.cartId;

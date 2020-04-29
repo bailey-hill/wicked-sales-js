@@ -57,6 +57,7 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
+        this.getCartItems();
         this.setState({
           cart: this.state.cart.concat(data)
         });
@@ -129,7 +130,7 @@ class App extends React.Component {
       return (
         <div>
           <Header setView={setView} cartItemCount={this.cartItemCount()} />
-          <CartSummary totalPrice={this.totalPrice()} setView={setView}
+          <CartSummary totalPrice={this.totalPrice()} setView={setView} getCartItems={this.getCartItems}
             viewParams={viewParams} cart={this.state.cart} product={this.props.product}
             removeFromCart={cartItemId => this.removeFromCart(cartItemId)}/>
         </div>
