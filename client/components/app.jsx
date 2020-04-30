@@ -130,7 +130,7 @@ class App extends React.Component {
       return (
         <div>
           <Header setView={setView} cartItemCount={this.cartItemCount()} />
-          <CartSummary totalPrice={this.totalPrice()} setView={setView} getCartItems={this.getCartItems}
+          <CartSummary totalPrice={this.totalPrice()} setView={setView}
             viewParams={viewParams} cart={this.state.cart} product={this.props.product}
             removeFromCart={cartItemId => this.removeFromCart(cartItemId)}/>
         </div>
