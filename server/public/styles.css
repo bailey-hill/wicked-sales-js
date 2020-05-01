@@ -93,6 +93,9 @@ p {
   color: green;
 }
 
+.checkout {
+  width: 208px;
+}
 
 @media only screen and (max-width: 768px) {
   .mobile {
