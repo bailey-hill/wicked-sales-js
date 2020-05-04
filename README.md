@@ -22,7 +22,7 @@ Try the application live at https://catalog.baileyohill.com/
 - Shopper can input their information at checkout.
 
 ## Preview
-![alt text](./image/wicked-sales.gif)
+![alt text](./image/new-catalog-gif1.gif)
 
 ## Development
 ### System Requirements
